@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title id="pageTitle"></title>
-  <!-- ======================= 게임 설정 및 문제 데이터 ======================= -->
-<script>
+  <!-- ======================= 게임 설정 및 문제 데이터 (최상단 배치)======================= -->
+ <script>
   /* 게임 설정 및 문제 데이터 */
   const gameConfig = {
-    "gameTitle": "y=a(x-p)^2의 그래프(상)",
+    "gameTitle": "$y=a(x-p)^2$의 그래프(상)",
     "defaultScore": 10,
     "bannerURL": "",
     "randomizeQuestions": true,
@@ -2253,7 +2253,11 @@
   window.onload = () => {
     // 게임 타이틀은 일반 텍스트로 설정 (MathJax 렌더링 없음)
     document.getElementById("pageTitle").textContent = gameTitle;
-    elements.gameTitle.textContent = gameTitle;
+    // elements.gameTitle.textContent = gameTitle;
+    elements.gameTitle.innerHTML = gameTitle;
+    if (typeof MathJax !== 'undefined') {
+      MathJax.typesetPromise([elements.gameTitle]);
+    }
 
     // Apply text variables from JS consts to elements
     elements.startButton.textContent = START_BUTTON_TEXT;
